@@ -31,7 +31,7 @@ import static java.util.Optional.ofNullable;
  * Abstract class for diagram generation. This class provides a framework for generating
  * textual representations of graphs.
  */
-public abstract class DiagramGenerator {
+public abstract class DiagramGenerator implements GraphRenderer {
 
 	public enum CallStyle {
 

@@ -15,6 +15,7 @@
  */
 package com.alibaba.cloud.ai.graph;
 
+import com.alibaba.cloud.ai.graph.diagram.AsciiLayoutGenerator;
 import com.alibaba.cloud.ai.graph.diagram.MermaidGenerator;
 import com.alibaba.cloud.ai.graph.diagram.PlantUMLGenerator;
 
@@ -43,15 +44,19 @@ public record GraphRepresentation(Type type, String content) {
 		/**
 		 * A drawable graph using Mermaid syntax.
 		 */
-		MERMAID(new MermaidGenerator());
+		MERMAID(new MermaidGenerator()),
+		/**
+		 * A layered ASCII diagram, readable directly from console output.
+		 */
+		ASCII(new AsciiLayoutGenerator());
 
-		final DiagramGenerator generator;
+		final GraphRenderer generator;
 
 		/**
-		 * Constructs a new instance of {@code Type} with the specified diagram generator.
-		 * @param generator the diagram generator to be used by this instance
+		 * Constructs a new instance of {@code Type} with the specified renderer.
+		 * @param generator the renderer to be used by this instance
 		 */
-		Type(DiagramGenerator generator) {
+		Type(GraphRenderer generator) {
 			this.generator = generator;
 		}
 
